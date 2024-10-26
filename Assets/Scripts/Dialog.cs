@@ -41,16 +41,13 @@ public class Dialog : MonoBehaviour
             if (text[i] == '{')
             {
                 readMode = true;
-                Debug.Log("bracket open");
             }
             else if (text[i] == '}')
             {
                 readMode = false;
-                Debug.Log("bracket close");
             }
             else if (readMode)
             {
-                Debug.Log("read name");
                 if (currentStr.Length > 0)
                 {
                     dialogue.Add(currentStr);
@@ -95,6 +92,7 @@ public class Dialog : MonoBehaviour
     {
 
         gameObject.SetActive(false);
+        FindAnyObjectByType<Lantern>().Extinguish();
     }
 
     private void MainUpdateLoop()

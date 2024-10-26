@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CustomIK : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class CustomIK : MonoBehaviour
         rootPos = root.transform.position;
         targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 delta = targetPos - rootPos;
-        float len = Mathf.Clamp((delta).magnitude / 2, .2f, 2);
+        float len = Mathf.Clamp((delta).magnitude / 2, .2f, 1.95f);
         joint1Angle = Mathf.Acos((len * len - 2) / 2) * Mathf.Rad2Deg;
         joint1.transform.localRotation = Quaternion.Euler(0, 0, joint1Angle);
 
