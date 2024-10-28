@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Dialog : MonoBehaviour
@@ -13,6 +14,7 @@ public class Dialog : MonoBehaviour
         Wait
     }
 
+    [SerializeField] private bool isFinal = false;
     [SerializeField] private TextAsset txtFile;
     [SerializeField] private List<string> names;
     [SerializeField] private List<string> dialogue;
@@ -52,7 +54,14 @@ public class Dialog : MonoBehaviour
                 {
                     dialogue.Add(currentStr);
                 }
-                currentStr = names[(text[i] - '0') - 1] + ": ";
+                if ((text[i] - '0') - 1 == 0)
+                {
+                    currentStr = "";
+                }
+                else
+                {
+                    currentStr = names[(text[i] - '0') - 1] + ": ";
+                }
             }
             else
             {
@@ -92,7 +101,7 @@ public class Dialog : MonoBehaviour
     {
 
         gameObject.SetActive(false);
-        FindAnyObjectByType<Lantern>().Extinguish();
+        FindAnyObjectByType<Lantern>().Extinguish(isFinal);
     }
 
     private void MainUpdateLoop()
