@@ -69,7 +69,6 @@ public class Lantern : MonoBehaviour
         else
         {
             matchButton.SetActive(true);
-            Debug.LogError("ENABLING FROM HERE");
             FindAnyObjectByType<RowerController>().OnIkEnabled();
         }
     }

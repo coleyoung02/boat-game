@@ -1,0 +1,1 @@
+﻿{2}"Maybe I should start listening then."{3}"There are a lot of things one can pick up on once you listen close enough."{2}"Funny words, you some kind of mystic?"{3}"I wouldn’t say so."{2}"I see."{3}"I gotta say, you’re quite the enigmatic lady."{1}She laughs, possibly for the first time that night.{3}"Man is often allured by what he doesn’t know."

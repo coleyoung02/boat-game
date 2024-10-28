@@ -22,7 +22,6 @@ public class Match : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
         if (mouseY < -.5f)
         {
-            Debug.Log(mouseY);
             if (!lit.activeSelf)
             {
                 Strike();

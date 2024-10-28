@@ -12,19 +12,19 @@ public class RowerController : MonoBehaviour
 
     public void OnHandReturn()
     {
-        Debug.LogError("they hit the pentagon");
         ikArm.SetActive(false);
         rowerArmObj.SetActive(true);
         oar.SetActive(false);
+        rower.SetTrigger("Row");
     }
 
     public void OnIkEnabled()
     {
-        Debug.LogError("ENABLING FROM there");
         ikArm.SetActive(true);
         FindAnyObjectByType<CustomIK>().SetUsable(true);
         rowerArmObj.SetActive(false);
         oar.SetActive(true);
+        rower.SetTrigger("Idle");
 
     }
 }

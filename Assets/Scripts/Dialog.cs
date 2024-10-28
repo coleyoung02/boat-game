@@ -145,6 +145,10 @@ public class Dialog : MonoBehaviour
 
     private bool CheckAdvance()
     {
+        if (FindAnyObjectByType<MenuManager>().GetPaused()) 
+        {
+            return false;
+        }
         return Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return);
     }
 

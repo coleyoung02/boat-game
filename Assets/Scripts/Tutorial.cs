@@ -134,6 +134,10 @@ public class Tutorial : MonoBehaviour
 
     private bool CheckAdvance()
     {
+        if (FindAnyObjectByType<MenuManager>().GetPaused())
+        {
+            return false;
+        }
         return (index == 0 && matchGrabbed) || (index == 1 && matchStruck) || (index == 2 && lanternLit);
     }
 

@@ -8,6 +8,7 @@ public class CustomIK : MonoBehaviour
     [SerializeField] private GameObject joint1;
     [SerializeField] private GameObject wrist;
     [SerializeField] private Camera mainCam;
+    [SerializeField] private GameObject handTarget;
 
     private float rootAngle;
     private float joint1Angle;
@@ -31,15 +32,19 @@ public class CustomIK : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindAnyObjectByType<MenuManager>().GetPaused())
+        {
+            return;
+        }
         if (hasControl)
         {
             targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         else
         {
-            Vector2 d = new Vector2(2.02f, -1.21f) - (Vector2)wrist.transform.position;
-            targetPos = wrist.transform.position + (Vector3)d.normalized * Time.deltaTime * 1.5f;
-            if (d.magnitude < .05)
+            Vector2 d = (Vector2)handTarget.transform.position - (Vector2)wrist.transform.position;
+            targetPos = wrist.transform.position + (Vector3)d.normalized * Time.deltaTime * Mathf.Min(1.5f, d.magnitude * 10f);
+            if (d.magnitude < .075)
             {
                 FindAnyObjectByType<RowerController>().OnHandReturn();
             }
